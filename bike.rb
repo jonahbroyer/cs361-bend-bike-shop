@@ -1,23 +1,31 @@
-# Bike
-
 class Bike
 
-  STANDARD_WEIGHT = 200 # lbs
-  MAX_CARGO_ITEMS = 10
+  attr_accessor :id, :color, :price, :cargo, :rented
 
-  attr_accessor :id, :color, :price, :weight, :rented, :cargo_contents
-
-  def initialize(id, color, price, weight = STANDARD_WEIGHT, rented = false)
+  def initialize(id, color, price, cargo, rented = false)
     @id = id
     @color = color
     @price = price
-    @weight = weight
+    @cargo = cargo
     @rented = rented
-    @cargo_contents = []
   end
 
   def rent!
     self.rented = true
+  end
+
+end
+
+class Cargo
+
+  STANDARD_WEIGHT = 200 # lbs
+  MAX_CARGO_ITEMS = 10
+
+  attr_accessor :weight, :cargo_contents
+
+  def initialize(weight = STANDARD_WEIGHT)
+    @weight = weight
+    @cargo_contents = []
   end
 
   def add_cargo(item)
